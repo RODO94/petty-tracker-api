@@ -6,9 +6,8 @@ import (
 )
 
 func init(){
-
-initializers.ConnectToDB()
-initializers.LoadEnvVariables()
+	initializers.LoadEnvVariables()
+	initializers.ConnectToDB()
 }
 
 func main() {
