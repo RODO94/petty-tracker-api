@@ -1,10 +1,13 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	uuid "github.com/satori/go.uuid"
+	"gorm.io/gorm"
+)
 
 type User struct {
 	gorm.Model
-	ID string
+	ID uuid.UUID
 	Name string
 	Email string
 	Password string

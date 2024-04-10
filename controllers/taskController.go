@@ -2,6 +2,6 @@ package controllers
 
 import "github.com/gin-gonic/gin"
 
-func createTask(c *gin.Context){
+func TaskCreate(c *gin.Context){
 	
 }
