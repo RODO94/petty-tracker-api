@@ -47,7 +47,7 @@ func UserLogin(c *gin.Context){
 	c.Bind(&body)
 
 	var user models.User
-	initializers.DB.First(&user, body.Email )
+	initializers.DB.Where("Email = ?",body.Email).First(&user)
 
 
 	result := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(body.Password))
@@ -57,7 +57,31 @@ func UserLogin(c *gin.Context){
 			"message":"Login Succesful",
 		})
 	} else {
-		c.Status(400)
+		c.JSON(400, gin.H{
+			"message":"Login Unsuccesful",
+		})
 	}
 
+}
+
+func UserGet(c *gin.Context){
+
+	id := c.Param("id")
+
+	var user models.User
+	initializers.DB.First(&user,id)
+
+	c.JSON(200, gin.H{
+		"user":user,
+	})
+}
+
+func UserGetAll(c *gin.Context){
+
+	var user models.User
+	initializers.DB.Find(&user)
+
+	c.JSON(200, gin.H{
+		"user":user,
+	})
 }
