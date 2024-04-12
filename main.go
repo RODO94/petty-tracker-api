@@ -25,6 +25,12 @@ func main() {
 	r.PUT("/home", controllers.HomeUpdate)
 	r.DELETE("/home", controllers.HomeDelete)
 
+	r.GET("/task", controllers.TaskGetAll)
+	r.GET("/task/:id", controllers.TaskGetOne)
+	r.POST("/task", controllers.TaskCreate)
+	r.PUT("/task", controllers.TaskUpdate)
+	r.DELETE("/task", controllers.TaskDelete)
+
 
 		r.Run() // listen and serve on 0.0.0.0:3000
 }

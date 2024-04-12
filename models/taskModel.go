@@ -8,4 +8,5 @@ type Task struct {
 	UserID string
 	HomeID string
 	Weighting int16
+	Status string
 }

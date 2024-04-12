@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/RODO94/petty-tracker-api/initializers"
-	"github.com/RODO94/petty-tracker-api/models"
 )
 
 func init() {
@@ -15,6 +14,8 @@ func init() {
 
 func main() {
 fmt.Println("Migration")
-	initializers.DB.AutoMigrate(&models.User{},&models.Home{},&models.Task{})
-
-}
+	// initializers.DB.AutoMigrate(&models.User{},&models.Home{},&models.Task{})
+	type Task struct {
+		Status string
+	}
+	initializers.DB.Migrator().AddColumn(&Task{}, "Status")}
