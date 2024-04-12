@@ -78,10 +78,21 @@ func UserGet(c *gin.Context){
 
 func UserGetAll(c *gin.Context){
 
-	var user models.User
+	var user []models.User
 	initializers.DB.Find(&user)
 
 	c.JSON(200, gin.H{
 		"user":user,
+	})
+}
+
+func UserDelete(c *gin.Context){
+
+	id := c.Param("id")
+
+	initializers.DB.Delete(&models.User{},id)
+
+	c.JSON(200, gin.H{
+		"message":"User Deleted",
 	})
 }

@@ -41,7 +41,7 @@ func HomeGetOne(c *gin.Context){
 
 func HomeGetAll(c *gin.Context){
 
-	var home models.Home
+	var home []models.Home
 	initializers.DB.Find(&home)
 
 	c.JSON(200, gin.H{

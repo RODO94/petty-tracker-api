@@ -14,10 +14,18 @@ func init(){
 func main() {
 
 	r := gin.Default()
+
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+
 	r.POST("/user", controllers.UserCreate)
 	r.POST("/login", controllers.UserLogin)
 	r.GET("/user",controllers.UserGetAll)
 	r.GET("/user/:id",controllers.UserGet)
+	r.DELETE("/user/:id",controllers.UserDelete)
 
 	r.GET("/home", controllers.HomeGetAll)
 	r.GET("/home/:id", controllers.HomeGetOne)

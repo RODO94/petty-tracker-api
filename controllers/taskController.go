@@ -39,7 +39,7 @@ func TaskGetOne(c *gin.Context){
 
 func TaskGetAll(c *gin.Context){
 
-	var task models.Task
+	var task []models.Task
 	initializers.DB.Find(&task)
 
 	c.JSON(200, gin.H{
