@@ -16,6 +16,8 @@ func main() {
 	r := gin.Default()
 	r.POST("/user", controllers.UserCreate)
 	r.POST("/login", controllers.UserLogin)
+	r.GET("/user",controllers.UserGetAll)
+	r.GET("/user/:id",controllers.UserGet)
 
 	r.GET("/home", controllers.HomeGetAll)
 	r.GET("/home/:id", controllers.HomeGetOne)
@@ -23,6 +25,6 @@ func main() {
 	r.PUT("/home", controllers.HomeUpdate)
 	r.DELETE("/home", controllers.HomeDelete)
 
-	
+
 		r.Run() // listen and serve on 0.0.0.0:3000
 }
