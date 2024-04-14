@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/RODO94/petty-tracker-api/controllers"
 	"github.com/RODO94/petty-tracker-api/initializers"
 	"github.com/gin-gonic/gin"
@@ -13,6 +15,7 @@ func init(){
 
 func main() {
 
+	server := os.Getenv("SERVER_URL")
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
@@ -40,5 +43,5 @@ func main() {
 	r.DELETE("/task", controllers.TaskDelete)
 
 
-		r.Run() // listen and serve on 0.0.0.0:3000
+		r.Run(server) // listen and serve on 0.0.0.0:3000
 }
